@@ -5,10 +5,12 @@
 include 'vendor\autoload.php';
 
 $c1 = new App\Model\Curso();
-$c1->setNome("MySQL 5");
-$c1->setValor(200.00);
+$c1->setNome("");
 
-echo $c1->getNome() . $c1->getValor();
+
+
 
 $c1DAO = new App\DAO\CursoDAO();
-$c1DAO->inserir($c1);
+foreach ($c1DAO->pesquisar($c1) as $item){
+    echo $item->getId() . $item->getNome() . $item->getValor() . "<br>";
+}
